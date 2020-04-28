@@ -1,0 +1,25 @@
+{
+	"name": "dom-helpers-extra",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"cherry": "cherry-pick --name=dom-helpers-extra --cwd=src --input-dir=../src --cjs-dir=cjs --esm-dir=esm"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bplok20010/dom-helpers-extra.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/bplok20010/dom-helpers-extra/issues"
+	},
+	"homepage": "https://github.com/bplok20010/dom-helpers-extra#readme",
+	"devDependencies": {},
+	"dependencies": {
+		"dom-helpers": "^5.1.4"
+	}
+}
