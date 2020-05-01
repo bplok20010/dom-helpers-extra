@@ -14,13 +14,13 @@ describe("hasScroll", () => {
 		expect(hasScroll(box, "x")).toEqual(false);
 	});
 
-	it("setOffset -2", () => {
+	it("hasScroll -2", () => {
 		content.style.height = "201px";
 		expect(hasScroll(box, "y")).toEqual(true);
 		expect(hasScroll(box, "x")).toEqual(false);
 	});
 
-	it("setOffset -3", () => {
+	it("hasScroll -3", () => {
 		content.style.height = "201px";
 		content.style.width = "201px";
 		expect(hasScroll(box, "y")).toEqual(true);
