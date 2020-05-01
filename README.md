@@ -5,7 +5,7 @@ Related extension of dom-helpers
 ## Install
 
 ```
-npm install --save dom-helpers-extra
+npm install --save dom-helpers dom-helpers-extra
 ```
 
 ## Usage
