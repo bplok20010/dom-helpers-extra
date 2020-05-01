@@ -1,25 +1,76 @@
 {
-	"name": "dom-helpers-extra",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"cherry": "cherry-pick --name=dom-helpers-extra --cwd=src --input-dir=../src --cjs-dir=cjs --esm-dir=esm"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/bplok20010/dom-helpers-extra.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/bplok20010/dom-helpers-extra/issues"
-	},
-	"homepage": "https://github.com/bplok20010/dom-helpers-extra#readme",
-	"devDependencies": {},
-	"dependencies": {
-		"dom-helpers": "^5.1.4"
-	}
+  "name": "dom-helpers-extra",
+  "version": "0.1.0",
+  "description": "Related extension of dom-helpers",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "start": "tsc -w",
+    "cjs": "transform-es src -d cjs -c -t cjs",
+    "esm": "transform-es src -d esm -c -t esm",
+    "tsc": "tsc",
+    "test": "run-s tsc karma",
+    "karma": "karma start karma.conf.js",
+    "pkg-pick": "node scripts/pkg-pick",
+    "build": "run-s tsc cjs esm pkg-pick"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bplok20010/dom-helpers-extra.git"
+  },
+  "keywords": [
+    "dom-helpers",
+    "dom-helpers-extra",
+    "dom",
+    "api",
+    "cross-browser"
+  ],
+  "author": "nobo.zhou@foxmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bplok20010/dom-helpers-extra/issues"
+  },
+  "homepage": "https://github.com/bplok20010/dom-helpers-extra#readme",
+  "devDependencies": {
+    "babel-loader": "^8.1.0",
+    "fs-extra": "^9.0.0",
+    "jasmine-core": "^3.5.0",
+    "karma": "^5.0.4",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-jasmine": "^3.1.1",
+    "karma-mocha": "^2.0.1",
+    "karma-webpack": "^4.0.2",
+    "mocha": "^7.1.2",
+    "npm-run-all": "^4.1.5",
+    "simulant": "^0.2.2",
+    "transform-es": "^5.0.3",
+    "webpack": "^4.43.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.9.6",
+    "dom-helpers": "^5.1.4",
+    "resize-observer-polyfill": "^1.5.1"
+  },
+  "browserslist": [
+    ">=0.25%",
+    "not dead",
+    "not op_mini all",
+    "not Android 4.4.3-4.4.4",
+    "not ios_saf < 10",
+    "not Chrome < 50",
+    "firefox ESR"
+  ],
+  "files": [
+    "*.md",
+    "cjs",
+    "esm",
+    "lib",
+    "domReady",
+    "hasScroll",
+    "isScrollEnd",
+    "offset",
+    "ResizeObserver",
+    "scrollIntoView"
+  ]
 }
