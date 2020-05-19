@@ -19,8 +19,17 @@ describe("offset", () => {
 		expect(~~coords.top).toBe(0);
 		expect(~~coords.left).toBe(0);
 
-		expect(parseInt(el.style.left, 10)).toEqual(-517);
-		expect(parseInt(el.style.top, 10)).toEqual(-517);
+		expect(parseInt(el.style.left, 10)).toEqual(-518);
+		expect(parseInt(el.style.top, 10)).toEqual(-518);
+
+		offset(el, {
+			left: 0,
+			top: 0,
+			using: pos => {
+				expect(pos.left).toEqual(-518);
+				expect(pos.top).toEqual(-518);
+			},
+		});
 	});
 
 	it("setOffset -2", () => {
@@ -31,7 +40,7 @@ describe("offset", () => {
 		expect(~~coords.top).toBe(0);
 		expect(~~coords.left).toBe(0);
 
-		expect(parseInt(el.style.left, 10)).toEqual(-517);
+		expect(parseInt(el.style.left, 10)).toEqual(-518);
 		expect(parseInt(el.style.top, 10)).toEqual(-418);
 	});
 });

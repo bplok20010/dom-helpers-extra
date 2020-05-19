@@ -8,6 +8,7 @@ function offset(
 	coords: {
 		left?: number;
 		top?: number;
+		using: (pos: { left?: number; top?: number }) => void;
 	}
 ): void;
 function offset(
@@ -15,24 +16,29 @@ function offset(
 	coords?: {
 		left?: number;
 		top?: number;
+		using: (pos: { left?: number; top?: number }) => void;
 	}
 ) {
 	if (!coords) {
 		return getOffset(node);
 	}
 
-	let curPosition,
-		curLeft,
-		curCSSTop,
-		curTop,
-		curOffset,
-		curCSSLeft,
-		calculatePosition,
+	let curPosition: ReturnType<typeof position>,
+		curLeft: number,
+		curCSSTop: string,
+		curTop: number,
+		curOffset: ReturnType<typeof getOffset>,
+		curCSSLeft: string,
+		calculatePosition: boolean,
 		positionState = css(node, "position"),
 		props: {
 			left?: string;
 			top?: string;
 		} = {};
+	let targetPos: {
+		left?: number;
+		top?: number;
+	} = {};
 
 	// Set position first, in-case top/left are set even on static elem
 	if (positionState === "static") {
@@ -40,8 +46,8 @@ function offset(
 	}
 
 	curOffset = getOffset(node);
-	curCSSTop = css(node, "top");
-	curCSSLeft = css(node, "left");
+	curCSSTop = css(node, "top") as string;
+	curCSSLeft = css(node, "left") as string;
 	calculatePosition =
 		(positionState === "absolute" || positionState === "fixed") &&
 		(curCSSTop + curCSSLeft).indexOf("auto") > -1;
@@ -58,13 +64,19 @@ function offset(
 	}
 
 	if (coords.top != null) {
-		props.top = coords.top - curOffset.top + curTop + "px";
+		targetPos.top = coords.top - curOffset.top + curTop;
+		props.top = targetPos.top + "px";
 	}
 	if (coords.left != null) {
-		props.left = coords.left - curOffset.left + curLeft + "px";
+		targetPos.left = coords.left - curOffset.left + curLeft;
+		props.left = targetPos.left + "px";
 	}
 
-	css(node, props);
+	if (coords.using) {
+		coords.using(targetPos);
+	} else {
+		css(node, props);
+	}
 
 	return;
 }
