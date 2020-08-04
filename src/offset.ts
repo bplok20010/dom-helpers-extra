@@ -8,7 +8,7 @@ function offset(
 	coords: {
 		left?: number;
 		top?: number;
-		using: (pos: { left?: number; top?: number }) => void;
+		using?: (pos: { left?: number; top?: number }) => void;
 	}
 ): void;
 function offset(
@@ -16,7 +16,7 @@ function offset(
 	coords?: {
 		left?: number;
 		top?: number;
-		using: (pos: { left?: number; top?: number }) => void;
+		using?: (pos: { left?: number; top?: number }) => void;
 	}
 ) {
 	if (!coords) {
